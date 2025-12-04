@@ -23,7 +23,13 @@ type ExampleReply struct {
 }
 
 // Add your RPC definitions here.
-
+type TaskDesc struct {
+	TaskType  int    // 0: MapTask 1: ReduceTask 2: ExitTask
+	TaskID    int    // Task number
+	InputFile string // for Map tasks
+	NumMap    int    // number of map tasks
+	NumReduce int    // number of reduce tasks
+}
 
 // Cook up a unique-ish UNIX-domain socket name
 // in /var/tmp, for the coordinator.
@@ -33,4 +39,5 @@ func coordinatorSock() string {
 	s := "/var/tmp/824-mr-"
 	s += strconv.Itoa(os.Getuid())
 	return s
+	fth
 }
